@@ -1,0 +1,26 @@
+server:
+  port: 5000
+  servlet:
+    encoding:
+      charset: utf-8
+
+spring:
+  datasource:
+    url: jdbc:mariadb://${rds.hostname}:${rds.port}/${rds.db.name}
+    driver-class-name: org.mariadb.jdbc.Driver
+    username: ${rds.username}
+    password: ${rds.password}
+
+  h2:
+    console:
+      enabled: true
+
+  jpa:
+    database: mysql   # 추가 해준 부분
+    database-platform: org.hibernate.dialect.MySQL5InnoDBDialect # 추가 해준 부분
+    open-in-view: true
+    hibernate:
+      ddl-auto: create
+      naming:
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+    show-sql: true
